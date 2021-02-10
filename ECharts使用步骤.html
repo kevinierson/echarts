@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.box {
+				width: 450px;
+				height: 350px;
+			}
+
+			.line {
+				width: 700px;
+				height: 500px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+		<div class="line"></div>
+		<script src="js/charts-min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//初始化实例对象 echarts.init(dom容器);
+			var myChart = echarts.init(document.querySelector('.box'))
+			//指定配置项和数据
+			var option = {
+				//设置图表标题
+				title: {
+					text: 'ECharts 入门示例'
+				},
+				//触发方式
+				tooltip: {
+					trigger: 'axis'
+				},
+				//图例组件
+				legend: {
+					data: ['销量']
+				},
+				//设置x轴相关配置
+				xAxis: {
+					data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+				},
+				yAxis: {
+					type: 'value'
+				},
+				//工具箱组件，可以另存为图片等功能
+				toolbox: {
+					feature: {
+						saveAsImage: {}
+					}
+				},
+				//网格配置 grid可以控制线型图、柱状图大小
+				grid: {
+					left: '3%',
+					right: '4%',
+					bottom: '3%',
+					//是否显示刻度标签 如果是true就显示 否则反之
+					containLabel: true
+				},
+				//系列图表配置 它决定着显示哪种类型的图片
+				series: [{
+					name: '销量',
+					type: 'bar',
+					data: [5, 20, 36, 10, 10, 20]
+				}]
+			};
+
+			// 使用刚指定的配置项和数据显示图表。
+			myChart.setOption(option);
+		</script>
+		<script type="text/javascript">
+			var myChart = echarts.init(document.querySelector('.line'));
+			var option;
+
+			option = {
+				color: ['#40A3FF', '#00ff7f', 'red', 'lightpink', '#ffaa7f'],
+				title: {
+					text: '折线图堆叠'
+				},
+				tooltip: {
+					trigger: 'axis'
+				},
+				legend: {
+					data: ['邮件营销', '联盟广告', '视频广告', '直接访问', '搜索引擎']
+				},
+				grid: {
+					left: '3%',
+					right: '4%',
+					bottom: '3%',
+					containLabel: true
+				},
+				toolbox: {
+					feature: {
+						saveAsImage: {}
+					}
+				},
+				xAxis: {
+					type: 'category',
+					boundaryGap: false,
+					data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+				},
+				yAxis: {
+					type: 'value'
+				},
+				series: [{
+						name: '邮件营销',
+						type: 'line',
+						stack: '总量',
+						data: [120, 132, 101, 134, 90, 230, 210]
+					},
+					{
+						name: '联盟广告',
+						type: 'line',
+						stack: '总量',
+						data: [220, 182, 191, 234, 290, 330, 310]
+					},
+					{
+						name: '视频广告',
+						type: 'line',
+						stack: '总量',
+						data: [150, 232, 201, 154, 190, 330, 410]
+					},
+					{
+						name: '直接访问',
+						type: 'line',
+						stack: '总量',
+						data: [320, 332, 301, 334, 390, 330, 320]
+					},
+					{
+						name: '搜索引擎',
+						type: 'line',
+						stack: '总量',
+						data: [820, 932, 901, 934, 1290, 1330, 1320]
+					}
+				]
+			};
+
+			option && myChart.setOption(option);
+		</script>
+	</body>
+</html>
